@@ -110,6 +110,20 @@ function editNote() {
     showNotes();
 }
 
+function searchNote() {
+  let searchname = document.getElementById("searchstring");
+  result =[]
+  for(var i = 0; i < notesObj.length; i++) {
+    if(notesObj[i].title.toUpperCase().match(searchname.value.toUpperCase()) || notesObj[i].text.toUpperCase().match(searchname.value.toUpperCase())) {
+      result.push(notesObj[i]);
+    }
+  }
+
+  /*for (var i = 0; i < result.length; i++) {
+    console.log(result[i])
+  }*/
+}
+
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("plusBttn");
 
@@ -125,15 +139,23 @@ window.onclick = function(event) {
 
 function openEditWindow(index) {
   document.getElementById('edit-note-title').value = index;
-    document.getElementById('edit-note-text').value = index;
-    var modalEdit = document.getElementById('myModalEdit');
-    modalEdit.dataset.index = index;
-    modalEdit.style.display = "block";
+  document.getElementById('edit-note-text').value = index;
+  var modalEdit = document.getElementById('myModalEdit');
+  modalEdit.dataset.index = index;
+  modalEdit.style.display = "block";
 }
 
 function closeEditWindow() {
   let modalEdit = document.getElementById('myModalEdit');
   modalEdit.style.display = "none";
+}
+
+function openSearchWindow(index) {
+  document.getElementById('search-note-title').value = index;
+  document.getElementById('search-note-text').value = index;
+  var modalEdit = document.getElementById('myModalEdit');
+  modalEdit.dataset.index = index;
+  modalEdit.style.display = "block";
 }
 
 /*window.onclick = function(event) {
