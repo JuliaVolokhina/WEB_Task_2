@@ -61,7 +61,7 @@ function showNotes() {
   }
 }
 
-function deleteNote(index) {
+function deleteNote(newTitle) {
     let confirmDel = confirm("Удалить выбранную заметку?");
     if (confirmDel === true) {
         let notes = localStorage.getItem("notes");
