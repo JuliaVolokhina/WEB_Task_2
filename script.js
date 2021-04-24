@@ -61,6 +61,33 @@ function showNotes() {
   }
 }
 
+/*function showSearchedNotes() {
+  let notes = localStorage.getItem("notes");
+  if (notes === null) {
+    result = [];
+  } 
+  else {
+    result = JSON.parse(notes);
+  }
+  let html = "";
+  result.forEach(function(element, index) {
+    html += `
+        <div class="note">
+            <h3 class="note-title"> ${element.title} </h3>
+            <p class="note-text"> ${element.text}</p>
+        </div>
+            `;
+  });
+
+  let notesElm = document.getElementById("notes");
+  if (result.length != 0) {
+    notesElm.innerHTML = html;
+  } 
+  else {
+    notesElm.innerHTML = ``;
+  }
+}*/
+
 function deleteNote(newTitle) {
     let confirmDel = confirm("Удалить выбранную заметку?");
     if (confirmDel === true) {
@@ -117,6 +144,31 @@ function searchNote() {
     if(notesObj[i].title.toUpperCase().match(searchname.value.toUpperCase()) || notesObj[i].text.toUpperCase().match(searchname.value.toUpperCase())) {
       result.push(notesObj[i]);
     }
+  }
+
+  let notes = localStorage.getItem("notes");
+  if (notes === null) {
+    result = [];
+  } 
+  else {
+    result = JSON.parse(notes);
+  }
+  let html = "";
+  result.forEach(function(element, index) {
+    html += `
+        <div class="note">
+            <h3 class="note-title"> ${element.title} </h3>
+            <p class="note-text"> ${element.text}</p>
+        </div>
+            `;
+  });
+
+  let notesElm = document.getElementById("notes");
+  if (result.length != 0) {
+    notesElm.innerHTML = html;
+  } 
+  else {
+    notesElm.innerHTML = ``;
   }
 
   /*for (var i = 0; i < result.length; i++) {
